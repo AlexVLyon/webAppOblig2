@@ -1,0 +1,20 @@
+body{
+    display:grid;
+    max-width:1000px;
+    grid-template-areas:
+    "header header header"
+    "main main main";
+    Grid-template-columns: 1fr 1fr 1fr;
+}
+
+header {
+    width: 100 auto;
+    color: red;
+}
+
+
+.headerBar{
+    display: inline-block;
+    
+
+}
