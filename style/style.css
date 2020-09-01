@@ -1,6 +1,14 @@
+header {
+    grid-area: header;
+  }
+main {
+    grid-area: main;
+  }
+
 body{
+    margin: 0 auto;
     display:grid;
-    max-width:1000px;
+   
     grid-template-areas:
     "header header header"
     "main main main";
@@ -8,13 +16,57 @@ body{
 }
 
 header {
+    display: inline-block;
+    width: 100%;
+    position: relative;
+    grid-column-start: 1;
+    grid-column-end: 4;
     width: 100 auto;
     color: red;
+    border: 1px solid black;
 }
 
+h1{
+    width: 150px;
+    margin-left: 50px;
+    float:left;
+}
 
-.headerBar{
-    display: inline-block;
-    
+#userNameBar{
+    float: right;
+    color:blue;
+    margin-right: 100px;
+}
 
+main{
+    max-width:1500px;
+    margin:0 auto;
+}
+
+#todoList{
+    display: flex;
+    flex-direction: row;
+    flex-wrap:wrap;
+    justify-content: space-around;
+}
+
+.todo{
+    list-style: none;
+    width: 30%;
+}
+
+.deleteButton{
+    text-decoration: none;
+    color:white;
+    background-color: red;
+    padding:5px;
+    border-radius: 5px;
+}
+
+.completeButton{
+    text-decoration: none;
+    color:white;
+    background-color: green;
+    padding:5px;
+    border-radius: 5px;
 }
