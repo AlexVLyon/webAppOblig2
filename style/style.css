@@ -1,3 +1,7 @@
+*{
+    font-family: Tahoma,Verdana,Segoe,sans-serif; 
+}
+
 header {
     grid-area: header;
   }
@@ -22,25 +26,29 @@ header {
     grid-column-start: 1;
     grid-column-end: 4;
     width: 100 auto;
-    color: red;
     border: 1px solid black;
 }
 
 h1{
-    width: 150px;
     margin-left: 50px;
     float:left;
 }
 
 #userNameBar{
     float: right;
-    color:blue;
+    text-align: center;
     margin-right: 100px;
 }
 
 main{
     max-width:1500px;
     margin:0 auto;
+}
+
+#newTodo{
+    padding:25px;
+    font-size: 25px;
+    margin-top: 50px;
 }
 
 #todoList{
@@ -51,8 +59,11 @@ main{
 }
 
 .todo{
+    padding:15px;
     list-style: none;
-    width: 30%;
+    width: 28%;
+    box-shadow: 10px 10px 5px  gray;
+
 }
 
 .deleteButton{
@@ -63,18 +74,87 @@ main{
     border-radius: 5px;
 }
 
+#completedTodosHeading{
+    margin:50px 0 50px 0;
+}
+
+#checkboxContainer{
+    margin:10px;
+    float:right;
+}
+
 .completeButton{
     text-decoration: none;
     color:white;
-    background-color: green;
+    background-color: #56D4C2;
     padding:5px;
     border-radius: 5px;
 }
 
 #completedTodos{
+    width:100%;
+    margin:0 auto;
+    border-collapse: collapse;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+th{
+    padding:8px;
+    background:#E6E6E6;
+    text-align: left;
 
 }
 
-completedTodos th{
-
+#completedTodos tr{
+    border-bottom: 1px solid #818E94;
 }
+
+#completedTodos td{
+    padding:8px;
+}
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content */
+  .modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+  }
+
+  #modalHeader{
+      border-bottom: 1px solid black;
+  }
+  
+  /* The Close Button */
+  .close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+
