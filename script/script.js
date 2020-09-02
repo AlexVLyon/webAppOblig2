@@ -37,7 +37,6 @@ function startup(){
 
             createBtn.onclick = function(){
                     createNewTodo();
-                    console.log("EII");
                     modal.style.display = "none";
                 }
 
