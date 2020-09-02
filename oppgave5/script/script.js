@@ -1,18 +1,10 @@
-/*Lage et main HTML element
-Legge den til body
-Lage en paragraph
-Legge til "Jeg trener på JavaScript" i en paragraf
-Gi denne en klasse*/
-
 window.onload = startup;
 
 function startup(){
-
     /*Lage et main HTML element
     Legge den til body */
         var mainElement = document.createElement("main");
         document.body.appendChild(mainElement); 
-
 
     //LAge paragraph
     //Legge til "Jeg trener på Javascript" i en paragraf
@@ -24,8 +16,8 @@ function startup(){
 
 
     //Lage en select box
-
         var selectBox =  document.createElement("select");
+
     //Populere selectboksen basert på et objekt
         var objekts = [{option: "option 1",value:1},{ option: "option2",value:2},{option:"option3",value:3}];
 
@@ -36,7 +28,6 @@ function startup(){
 
             selectBox.appendChild(option);
         }
-
         mainElement.appendChild(selectBox);
 
     //I main sentrere selectboksen og sette maksbredde til 500px    
@@ -56,15 +47,47 @@ function startup(){
     mainElement.appendChild(testBtn);
     mainElement.appendChild(resetBtn);
 
-    testBtn.addEventListener("click", reverseP); //Funksjon lenger nede:
+    testBtn.addEventListener("click", reverseP);
+        //reverseP function som reverserer ord.
+    resetBtn.addEventListener("click",populateList);    
+     //Om du trykker reset, populeres listen på nytt.
 
-    //Om du trykker reset, populeres listen på nytt.
-    resetBtn.addEventListener("click",populateList);
 
+// ======== REVERSERE ORD =============
+    function reverseP(){
+
+        //Splitter inn i array
+        var words = p.innerHTML.split(" ");
+
+        //Fjern første bokstav
+        for(i=0;i<words.length;i++){
+            words[i] = words[i].slice(1);
+        }
+
+        //split inn i characters.
+        var chars = [];
+
+        for(i=0;i<words.length;i++){
+            splitWord = words[i].split('');
+            chars.push(splitWord);
+        }
+
+        //reverse og join inn i string
+        var reverseString = "";
+        for(i=0;i<chars.length;i++){
+            var word = chars[i].reverse();
+            reverseString +=" " +  word.join("");
+        }
+        p.innerHTML = reverseString;
+    } 
+
+// ===========  LISTE  =================
      //Lage en ul med 4 listeelementer
      var liste = document.createElement("UL");
 
      populateList();
+
+     //Funksjon her sånn at reset funker.
 
      function populateList(){
         //Påse at liste er tom.
@@ -91,32 +114,4 @@ function startup(){
     
          mainElement.appendChild(liste);
      }
-
-    function reverseP(){
-
-        //Splitter inn i array
-        var words = p.innerHTML.split(" ");
-
-        //Fjern første bokstav
-        for(i=0;i<words.length;i++){
-            words[i] = words[i].slice(1);
-        }
-
-        //split inn i characters.
-        var chars = [];
-
-        for(i=0;i<words.length;i++){
-            splitWord = words[i].split('');
-            chars.push(splitWord);
-        }
-
-        //reverse og join inn i string
-        var reverseString = "";
-        for(i=0;i<chars.length;i++){
-            var word = chars[i].reverse();
-            
-            reverseString +=" " +  word.join("");
-        }
-        p.innerHTML = reverseString;
-    }    
 }
