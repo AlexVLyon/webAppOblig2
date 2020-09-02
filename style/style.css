@@ -41,6 +41,7 @@ h1{
 }
 
 main{
+    width:80%;
     max-width:1500px;
     margin:0 auto;
 }
@@ -67,11 +68,24 @@ main{
 }
 
 .deleteButton{
+    border: none;
     text-decoration: none;
     color:white;
     background-color: red;
     padding:5px;
     border-radius: 5px;
+
+    margin:5;
+}
+
+.completeButton{
+    border: none;
+    text-decoration: none;
+    color:white;
+    background-color: #56D4C2;
+    padding:5px;
+    border-radius: 5px;
+    margin:5px;
 }
 
 #completedTodosHeading{
@@ -83,13 +97,7 @@ main{
     float:right;
 }
 
-.completeButton{
-    text-decoration: none;
-    color:white;
-    background-color: #56D4C2;
-    padding:5px;
-    border-radius: 5px;
-}
+
 
 #completedTodos{
     width:100%;

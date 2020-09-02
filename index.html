@@ -7,24 +7,124 @@
     <title>Document</title>
     <script>
 
+        var todos = [{id:1,title:"Todotitle",description:"I'm baby sriracha hot chicken mixtape pabst organic air"},
+                     {id:2,title:"Todotitle",description:"I'm baby sriracha hot chicken mixtape pabst organic air"},
+                     {id:3,title:"Todotitle",description:"I'm baby sriracha hot chicken mixtape pabst organic air"}];
+        var completedTodos = [{id:4,title:"Todotitle",author:"Author Author",description:"I'm baby sriracha hot chicken mixtape pabst organic air", completedDate:"22.12.20"},
+                             {id:4,title:"Todotitle",author:"Author Author",description:"I'm baby sriracha hot chicken mixtape pabst organic air", completedDate:"22.12.20"},
+                             {id:4,title:"Todotitle",author:"Author Author",description:"I'm baby sriracha hot chicken mixtape pabst organic air", completedDate:"22.12.20"} ]
+
         window.onload = startup;
 
         function startup(){
             var modal = document.getElementById("createTodoModal");
-            // Get the button that opens the modal
+
             var btn = document.getElementById("newTodo");
-            // Get the <span> element that closes the modal
+
             var span = document.getElementsByClassName("close")[0];
-            // When the user clicks on the button, open the modal
+
             btn.onclick = function() {
-            modal.style.display = "block";
-            }
-            // When the user clicks on <span> (x), close the modal
-            span.onclick = function() {
-            modal.style.display = "none";
+                modal.style.display = "block";
             }
 
-            // When the user clicks anywhere outside of the modal, close it
+            addTodo();
+            addCompletedTodos();
+
+
+            function addTodo(){
+
+                //Sletter alt som var der fra før, lager alt på nytt.
+                document.getElementById("todoList").innerHTML=null;
+            
+                for(i=0;i<todos.length;i++){
+                    var title = todos[i].title;
+                    var description = todos[i].description;
+                    var id = todos[i].id;
+
+                    var listElement = document.createElement("li")
+                    listElement.className = "todo";
+
+                    var h3 = document.createElement("h3");
+                    h3.innerHTML = title;
+
+                    var p = document.createElement("p");
+                    p.innerHTML = description;
+
+                    //LAg med delete value
+                    var deleteButton = document.createElement("button");
+                        deleteButton.innerHTML = "Delete";
+                        deleteButton.className="deleteButton";
+                        deleteButton.value = id;
+
+                    var completeButton = document.createElement("button");
+                        completeButton.innerHTML = "Complete";
+                        completeButton.className = "completeButton";
+                        completeButton.value = id;
+
+                    listElement.appendChild(h3);
+                    listElement.appendChild(p);
+                    listElement.appendChild(deleteButton);
+                    listElement.appendChild(completeButton);
+
+                    document.getElementById("todoList").appendChild(listElement);
+                }
+            }
+
+
+            function addCompletedTodos(){
+                
+                //Adder først headingene: Gjør programmatisk sånn at en ikke sletter disse når funksjonen kalles på ny.
+                    var headingRow = document.createElement("tr");
+                    var headingTitle = document.createElement("th");
+                        headingTitle.innerHTML = "Title";
+                    var headingAuthor = document.createElement("th");
+                        headingAuthor.innerHTML = "Author";
+                    var headingDescription = document.createElement("th");
+                        headingDescription.innerHTML = "Description";
+                    var headingDate = document.createElement("th");
+                        headingDate.innerHTML = "Completed Date:"
+
+                        headingRow.appendChild(headingTitle); headingRow.appendChild(headingAuthor);
+                        headingRow.appendChild(headingDescription);
+                        headingRow.appendChild(headingDate);
+
+                        document.getElementById("completedTodos").appendChild(headingRow);
+
+
+
+                for(i=0;i<completedTodos.length;i++){
+                    var title = completedTodos[i].title;
+                    var description = completedTodos[i].description;
+                    var author = completedTodos[i].author;
+                    var date = completedTodos[i].completedDate;
+
+                    var tableRow = document.createElement("tr");
+
+                    var titleCell = document.createElement("td");
+                        titleCell.innerHTML = title;
+                    var descriptionCell = document.createElement("td"); 
+                        descriptionCell.innerHTML = description;
+
+                    var authorCell = document.createElement("td");
+                        authorCell.innerHTML = author;
+                    var dateCell = document.createElement("td");
+                        dateCell.innerHTML = date;
+
+
+                    tableRow.appendChild(titleCell);
+                    tableRow.appendChild(authorCell);
+                    tableRow.appendChild(descriptionCell);
+                    tableRow.appendChild(dateCell);
+
+                    document.getElementById("completedTodos").appendChild(tableRow);
+
+                }
+            }
+
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+
             window.onclick = function(event) {
                 if (event.target == modal) {
                     modal.style.display = "none";
@@ -45,6 +145,8 @@
     <main>
         <button id="newTodo">+Todo </button>
 
+        <!-- MODAL! -->
+
         <div id="createTodoModal" class="modal">
             <div class="modal-content">
 
@@ -52,43 +154,27 @@
                     <span class="close">&times;</span>
                     <h2>Create todo</h2>
                 </div>
-                
-                <label for="title">Title:</label>
-                <input type="text" id="title">
+                <ul>
+                    <li>
+                        <label for="title">Title:</label>
+                        <input type="text" id="title">
+                    </li>
 
-                <label for="description">Description:</label>
-                <input type="text" id="description">
+                    <li>
+                        <label for="description">Description:</label>
+                        <input type="text" id="description">
+                    </li>
 
-                <label for="author">Author:</label>
-                <input type="text" id="author">
-
-
+                    <li>
+                        <label for="author">Author:</label>
+                        <input type="text" id="author">
+                    </li>
+                </ul>
             </div>
-
-
         </div>
 
         <ul id="todoList">
-            <li class="todo">
-                <h3>Todo title</h3>
-                    <p>I'm baby sriracha hot chicken mixtape pabst organic air</p>
-                    <a class="deleteButton" href="api/delete">delete</a>
-                    <a class="completeButton" href="api/complete">complete</a>
-            </li>
-
-            <li class="todo">
-                <h3>Todo title</h3>
-                    <p>I'm baby sriracha hot chicken mixtape pabst organic air</p>
-                    <a class="deleteButton" href="api/delete">delete</a>
-                    <a class="completeButton" href="api/complete">complete</a>
-            </li>
-
-            <li class="todo">
-                <h3>Todo title</h3>
-                    <p>I'm baby sriracha hot chicken mixtape pabst organic air</p>
-                    <a class="deleteButton" href="api/delete">delete</a>
-                    <a class="completeButton" href="api/complete">complete</a>
-            </li>     
+              <li>test</li>
         </ul>
 
         <h2 id="completedTodosHeading">Completed todos</h2>
@@ -98,31 +184,7 @@
             </div>    
 
             <table id="completedTodos">
-                <tr>
-                    <th>Title</th>
-                    <th>Author</th>
-                    <th>Description</th>
-                    <th>Complete date</th>
-                </tr>
 
-                <tr>
-                    <td>Todotitle</td>
-                    <td>Author Author</td>
-                    <td>I'm baby sriracha hot chicken mixtape pabst organic air</td>
-                    <td>22.12.20</td>
-                </tr>
-                <tr>
-                    <td>Todotitle</td>
-                    <td>Author Author</td>
-                    <td>I'm baby sriracha hot chicken mixtape pabst organic air</td>
-                    <td>22.12.20</td>
-                </tr>
-                <tr>
-                    <td>Todotitle</td>
-                    <td>Author Author</td>
-                    <td>I'm baby sriracha hot chicken mixtape pabst organic air</td>
-                    <td>22.12.20</td>
-                </tr>
             </table>
 
         </main>
