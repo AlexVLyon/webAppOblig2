@@ -154,22 +154,26 @@ th{
 
   #inputWrapper{
     width:80%;
-    padding:20px;
+    padding-top:20px;
     margin:0 auto;
   }
 
   .inputFelt{
       width:100%;
-      margin: 5px;
+      margin-bottom: 5px;
       border: 1px solid black;
       border-radius:3px;
+      box-sizing:border-box;
   }
 
   #createButton{
+      font-size:large;
+      padding: 5px;
       color: white;
       border:none;
       width:100%;
       background-color: #56D4C2;
+      margin-bottom: 5px;
   }
 
   #modalHeader{

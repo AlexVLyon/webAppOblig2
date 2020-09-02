@@ -34,7 +34,6 @@ function startup(){
 
     //Create button    
         var createBtn = document.getElementById("createButton");
-
             createBtn.onclick = function(){
                     createNewTodo();
                     modal.style.display = "none";
@@ -166,10 +165,10 @@ function completeTodo(id){
     for(i=0;i<todos.length;i++){
         if(todos[i].id == id){
             var date = new Date();
-            var dd = date.getDay();
-            var mm = date.getMonth();
-            var yyyy = date.getFullYear();
-            var dato = dd + "." + mm + "." + yyyy;
+            var day = date.getDay();
+            var month = date.getMonth()+1;
+            var year = date.getFullYear();
+            var dato = day + "." + month + "." + year;
                         
             var completedObject = todos[i];
                 completedObject.completedDate = dato;
